@@ -1,3 +1,6 @@
+from turtle import down
+
+
 login = input('Введите Ваш логин :')
 
 def check_login(sum):
@@ -17,4 +20,4 @@ def my_login(lst):
     return sum(lst)
 
 my_login([1,2,3,4])    
-    
+   
