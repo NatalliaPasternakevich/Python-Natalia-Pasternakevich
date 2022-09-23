@@ -187,7 +187,5 @@ while 1:
     print(row6)
     print(row7)
     time.sleep(1)
-    os.system('clear') 
 
-    #добавить моргание 
-    
+
