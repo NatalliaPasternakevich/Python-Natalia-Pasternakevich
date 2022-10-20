@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from reference_book import views as st_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('ref-autor/<int:pk>',st_views.ShowAuthor.as_view()),
+    path('ref-autor-create/', st_views.CreateAuthor.as_view()),
+    path('ref-autor-update/<int:pk>',st_views.UpdateAuthor.as_view()),
+    path('ref-autor-delete/<int:pk>',st_views.DeleteAuthor.as_view()),
+    path('ref-autor/',st_views.ShowAuthors.as_view()),
 ]

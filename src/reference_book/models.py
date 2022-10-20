@@ -4,13 +4,15 @@ from django.db import models
 
 # Create your models here.
 
-class Autor(models.Model):
+class Author(models.Model):
     name = models.CharField(max_length=30)
     surname = models.CharField(max_length=30)
 
     def __str__(self):
         return self.name + ' ' + (self.surname)
 
+    def get_absolute_url(self):
+        return f'ref-autor/{self.pk}'
 
 class Seria(models.Model):
     name = models.CharField(max_length=120)
