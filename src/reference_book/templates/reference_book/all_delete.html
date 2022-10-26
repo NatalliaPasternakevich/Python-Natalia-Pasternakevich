@@ -1,14 +1,17 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'bs/css/bootstrap.min.css' %}" rel="stylesheet" >
+    <scrip src="{% static 'bs/js/bootstrap.min.js' %}"></script> 
     <title> Delete {{ refb_name }} </title>
 </head>
 <body>
     <h1>Delete {{ refb_name }} </h1>
-    {{ refb_name_tab }}: {{ object.name }}
+    {{ refb_name_tab }}: {{ object.name }} <br>
     Description: {{ object.description }}
     <form action="" method="post">
         {% csrf_token %}
