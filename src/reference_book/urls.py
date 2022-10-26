@@ -23,7 +23,7 @@ urlpatterns = [
 
     path('ref-publisher-create/', views.CreatePublisher.as_view(), name='publisher-create'),
     path('ref-publisher/<int:pk>',views.ReadPublisher.as_view(), name='publisher-detail'),
-    path('ref-publisher-update/<int:pk>',views.UpdatePublisheras_view(), name='publisher-update'),
+    path('ref-publisher-update/<int:pk>',views.UpdatePublisher.as_view(), name='publisher-update'),
     path('ref-publisher-delete/<int:pk>',views.DeletePublisher.as_view(), name='publisher-delete'),
     path('ref-publisher',views.ShowPublisher.as_view(), name='publisher-show'),
  
