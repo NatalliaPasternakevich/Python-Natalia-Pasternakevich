@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Deteil reference book </title>
+    <title> Read the author </title>
 </head>
 <body>
-    <h1>Deteil</h1>
+    <h1>Read the author </h1>
+    {% csrf_token %}
+    <h3>
     {{ object.name }}
     {{ object.surname }}
-    
+    </h3> 
+    <a href="{% url 'reference_book:author-show' %}">Back to of authors</a>
 </body>
 </html>
