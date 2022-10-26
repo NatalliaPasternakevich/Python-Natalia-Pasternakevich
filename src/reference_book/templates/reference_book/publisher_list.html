@@ -46,7 +46,8 @@
     <main class="flex-shrink-0">
     <div class="container">
         <h1>List of publisher</h1>
-        <table border="1">
+        <table class="table table-striped">
+            <!-- <table class="table table-bordered border-primary"> -->
             {% for obj in object_list %}
             <tr>
                 <td> <a href="% url 'reference_book:publisher-update' pk=obj.pk %"> {{ obj.pk }} </a> </td>
