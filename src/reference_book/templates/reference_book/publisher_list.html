@@ -6,20 +6,63 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{% static 'bs/css/bootstrap.min.css' %}" rel="stylesheet" >
+    <link href="{% static 'bs/css/cover.css' %}" rel="stylesheet" >
     <scrip src="{% static 'bs/js/bootstrap.min.js' %}"></script> 
     <title> List of publisher</title>
 </head>
-<body>
-    <h1>List of publisher</h1>
-    <table border="1">
-        {% for obj in object_list %}
-        <tr>
-            <td> <a href="% url 'reference_book:publisher-update' pk=obj.pk %"> {{ obj.pk }} </a> </td>
-            <td>{{ obj.name }} {{ obj.description}}</td>
-            <td><a href="% url 'reference_book:publisher-delete' pk=obj.pk %"> DELETE </a></td>
-        </tr>
-        {% endfor %}
-    </table> <br>
-    <a href="{% url 'reference_book:publisher-create' %}">Add an publisher</a>
-</body>
+
+
+<body class="d-flex flex-column h-100">
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">Fixed navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+              <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled">Disabled</a>
+                </li>
+              </ul>
+              <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+   <!-- Begin page content -->
+    <main class="flex-shrink-0">
+    <div class="container">
+        <h1>List of publisher</h1>
+        <table border="1">
+            {% for obj in object_list %}
+            <tr>
+                <td> <a href="% url 'reference_book:publisher-update' pk=obj.pk %"> {{ obj.pk }} </a> </td>
+                <td>{{ obj.name }} {{ obj.description}}</td>
+                <td><a href="% url 'reference_book:publisher-delete' pk=obj.pk %"class="btn btn-success"> <i class="bi bi-x-square"> Delete</i> </a></td>
+            </tr>
+            {% endfor %}
+        </table> <br>
+        <a href="{% url 'reference_book:publisher-create' %}">Add an publisher</a>
+    </div>
+     </main>
+  
+  <footer class="footer mt-auto py-3 bg-light">
+    <div class="container">
+      <span class="text-muted">Place sticky footer content here.</span>
+    </div>
+  </footer>     
+    </body>
 </html>
