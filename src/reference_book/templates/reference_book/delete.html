@@ -1,15 +1,21 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{% static 'bs/css/bootstrap.min.css' %}" rel="stylesheet" >
-    <scrip src="{% static 'bs/js/bootstrap.min.js' %}"></script> 
-    <title> Delete the author</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}
+Delete the author
+{% endblock title %}
+
+{% block body %}
+<h1>Delete the author </h1>
+{{ object.name }}
+{{ object.surname }}
+<form action="" method="post">
+{% csrf_token %}
+<input type="submit" value="Submit">
+</form>
+{% endblock body %}
+
+{% block footer %}{% endblock footer %}
+
+<!-- <body>
     <h1>Delete the author </h1>
     {{ object.name }}
     {{ object.surname }}
@@ -17,5 +23,4 @@
         {% csrf_token %}
         <input type="submit" value="Submit">
     </form>
-</body>
-</html>
+</body> -->

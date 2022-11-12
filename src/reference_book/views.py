@@ -12,6 +12,8 @@ class ShowAuthors(generic.ListView):
     model = models.Author
     template_name = 'reference_book/list.html'
 
+   
+
 
 class CreateAuthor(generic.CreateView):
     model = models.Author
@@ -44,7 +46,15 @@ class DeleteAuthor(generic.DeleteView):
 # Серия 
 class ShowSeria(generic.ListView):
     model = models.Seria
-    template_name = 'reference_book/seria_list.html'
+    template_name = 'reference_book/all_list.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['refb_name'] = 'seria'
+        context['refb_url_update'] = 'reference_book:seria-update'
+        context['refb_url_delete'] = 'reference_book:seria-delete'
+        context['refb_url_create'] = 'reference_book:seria-create'
+        return context
 
 
 class CreateSeria(generic.CreateView):
@@ -68,7 +78,7 @@ class ReadSeria(generic.DetailView):
         context = super().get_context_data(*args, **kwargs)
         context['refb_name'] = 'seria'
         context['refb_name_tab'] = 'Seria'
-        context['refb_name_url'] = 'reference_book:seria-show'
+        context['refb_url'] = 'reference_book:seria-show'
         return context
 
    
@@ -100,7 +110,15 @@ class DeleteSeria(generic.DeleteView):
 # Жанр 
 class ShowGenre(generic.ListView):
     model = models.Genre
-    template_name = 'reference_book/genre_list.html'
+    template_name = 'reference_book/all_list.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['refb_name'] = 'genre'
+        context['refb_url_update'] = 'reference_book:genre-update'
+        context['refb_url_delete'] = 'reference_book:genre-delete'
+        context['refb_url_create'] = 'reference_book:genre-create'
+        return context
 
 
 class CreateGenre(generic.CreateView):
@@ -124,7 +142,7 @@ class ReadGenre(generic.DetailView):
         context = super().get_context_data(*args, **kwargs)
         context['refb_name'] = 'genre'
         context['refb_name_tab'] = 'Genre'
-        context['refb_name_url'] = 'reference_book:genre-show'
+        context['refb_url'] = 'reference_book:genre-show'
         return context
 
    
@@ -156,7 +174,16 @@ class DeleteGenre(generic.DeleteView):
 # Издательство 
 class ShowPublisher(generic.ListView):
     model = models.Publisher
-    template_name = 'reference_book/publisher_list.html'
+    template_name = 'reference_book/all_list.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['refb_name'] = 'publisher'
+        context['refb_url_update'] = 'reference_book:publisher-update'
+        context['refb_url_delete'] = 'reference_book:publisher-delete'
+        context['refb_url_create'] = 'reference_book:publisher-create'
+        return context
+
 
 
 class CreatePublisher(generic.CreateView):
@@ -180,7 +207,7 @@ class ReadPublisher(generic.DetailView):
         context = super().get_context_data(*args, **kwargs)
         context['refb_name'] = 'publisher'
         context['refb_name_tab'] = 'Publisher'
-        context['refb_name_url'] = 'reference_book:publisher-show'
+        context['refb_url'] = 'reference_book:publisher-show'
         return context
 
    

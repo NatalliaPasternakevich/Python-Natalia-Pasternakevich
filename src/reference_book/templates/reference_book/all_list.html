@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}
+List of {{ refb_name }}
+{% endblock title %}
+
+{% block body %}
+<h1>List of {{ refb_name }}</h1>
+<table class="table table-striped">
+
+{% for obj in object_list %}
+<tr>
+<td> <a href="% url refb_url_update pk=obj.pk %"> {{ obj.pk }} </a> </td>
+<td>{{ obj.name }} {{ obj.description }}</td>
+<td><a href="% url refb_url_delete pk=obj.pk %"class="btn btn-success"> <i class="bi bi-x-square"> Delete</i> </a></td>
+</tr>
+{% endfor %}
+</table> <br>
+<a href="{% url refb_url_create %}">Add an genre</a>
+{% endblock body %}
+
+{% block footer %}{% endblock footer %}

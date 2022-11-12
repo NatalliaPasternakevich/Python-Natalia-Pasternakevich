@@ -1,15 +1,22 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{% static 'bs/css/bootstrap.min.css' %}" rel="stylesheet" >
-    <scrip src="{% static 'bs/js/bootstrap.min.js' %}"></script> 
-    <title> Read {{ refb_name }} </title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}
+Read {{ refb_name }} 
+{% endblock title %} 
+
+{% block body %}
+<h1>Read</h1>
+{% csrf_token %}
+<h3>
+{{ refb_name_tab }}: {{ object.name }}<br>
+Description: {{ object.description }}
+</h3> 
+<a href="{% url refb_url %}">Back to {{ refb_name }}</a>
+{% endblock body %}
+
+{% block footer %}{% endblock footer %}
+
+
+<!-- <body>
     <h1>Read</h1>
     {% csrf_token %}
     <h3>
@@ -17,5 +24,4 @@
         Description: {{ object.description }}
     </h3> 
     <a href="{% url refb_name_url %}">Back to {{ refb_name }}</a>
-</body>
-</html>
+</body> -->
