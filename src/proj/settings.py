@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'reference_book',
-    'product_card'
+    'product_card',
+    'home_page'
 ]
 
 MIDDLEWARE = [
