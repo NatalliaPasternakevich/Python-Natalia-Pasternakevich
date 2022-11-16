@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+List of books
+{% endblock title %}
+
+{% block body %}
+<h1>List of books</h1>
+<table class="table table-bordered border-primary">
+{% for obj in object_list %}
+<tr>
+<td><a href="{% url 'product_card:book-update' pk=obj.pk %}"> {{ obj.pk }} </a></td>
+<td>{{ object.name }}
+    {{ object.cover}}
+    {{ object.price }}
+    {{ object.authors }}
+    {{ object.series }}
+    {{ object.genre }}
+    {{ object.published }}
+    {{ object.pages }}
+    {{ object.binding }}
+    {{ object.book_format }}
+    {{ object.ISBN }}
+    {{ object.weight }}
+    {{ object.allowed_age }}
+    {{ object.publisher }}
+    {{ object.available }}
+    {{ object.active }}
+    {{ object.rating }}
+    {{ object.created }}
+    {{ object.updated }}</td>
+<td><a href="{% url 'product_card:book-delete' pk=obj.pk %}" class="btn btn-success"> <i class="bi bi-x-square"> Delete</i> </a></td>
+</tr>
+ {% endfor %}
+</table> <br>
+<a href="{% url 'product_card:book-create' %}">Add an book</a>
+{% endblock body %}
+
+{% block footer %}
+
+{% endblock footer %}
+

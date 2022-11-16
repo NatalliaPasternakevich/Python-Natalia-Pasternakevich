@@ -2,11 +2,14 @@
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,macos,python,visualstudio
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,macos,python,visualstudio
 
+media
+
 ### macOS ###
 # General
 .DS_Store
 .AppleDouble
 .LSOverride
+
 
 # Icon must end with two \r
 Icon

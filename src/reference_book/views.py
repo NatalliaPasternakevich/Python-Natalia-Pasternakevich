@@ -12,8 +12,6 @@ class ShowAuthors(generic.ListView):
     model = models.Author
     template_name = 'reference_book/list.html'
 
-   
-
 
 class CreateAuthor(generic.CreateView):
     model = models.Author

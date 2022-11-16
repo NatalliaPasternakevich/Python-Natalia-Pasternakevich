@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+Read the book
+{% endblock title %}
+
+{% block body %}
+<h1>Read the book </h1>
+{% csrf_token %}
+<h3>
+    {{ object.name }} <br>
+    <img src="{{ object.cover.url }}" class="img-fluid" > <br>
+    {{ object.price }} <br>
+    {{ object.authors }} <br>
+    {{ object.series }} <br>
+    {{ object.genre }} <br>
+    {{ object.published }} <br>
+    {{ object.pages }} <br>
+    {{ object.binding }} <br>
+    {{ object.book_format }} <br>
+    {{ object.ISBN }} <br>
+    {{ object.weight }} <br>
+    {{ object.allowed_age }} <br>
+    {{ object.publisher }} <br>
+    {{ object.available }} <br>
+    {{ object.active }} <br>
+    {{ object.rating }} <br>
+    {{ object.created }} <br>
+    {{ object.updated }}
+</h3> 
+<a href="{% url 'product_card:book-show' %}">Back to of books</a>
+{% endblock body %}
+
+{% block footer %}{% endblock footer %}
+

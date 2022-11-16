@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 {% block title %}
  Create {{ refb_name }} 
 {% endblock title %}
@@ -7,7 +8,7 @@
 <h1>Сreate {{ refb_name }} </h1>
 <form action="" method="post">
 {% csrf_token %}
-{{ form.as_p }}
+{{ form|crispy }}
 <input type="button" value="Send" class="btn btn-outline-success">
 </form>
 {% endblock body %}
