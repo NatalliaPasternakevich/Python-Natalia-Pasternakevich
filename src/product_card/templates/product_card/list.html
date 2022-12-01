@@ -9,27 +9,18 @@ List of books
 <table class="table table-bordered border-primary">
 {% for obj in object_list %}
 <tr>
-<td><a href="{% url 'product_card:book-update' pk=obj.pk %}"> {{ obj.pk }} </a></td>
-<td>{{ object.name }}
-    {{ object.cover}}
-    {{ object.price }}
-    {{ object.authors }}
-    {{ object.series }}
-    {{ object.genre }}
-    {{ object.published }}
-    {{ object.pages }}
-    {{ object.binding }}
-    {{ object.book_format }}
-    {{ object.ISBN }}
-    {{ object.weight }}
-    {{ object.allowed_age }}
-    {{ object.publisher }}
-    {{ object.available }}
-    {{ object.active }}
-    {{ object.rating }}
-    {{ object.created }}
-    {{ object.updated }}</td>
-<td><a href="{% url 'product_card:book-delete' pk=obj.pk %}" class="btn btn-success"> <i class="bi bi-x-square"> Delete</i> </a></td>
+<td><a href="{% url 'product_card:book-update' pk=obj.pk %}"> {{ obj.pk }} </a> </td>
+<td>{{ obj.name }} <br>  
+    {{ obj.authors }}
+</td>
+<td><a href="{% url 'product_card:book-delete' pk=obj.pk %}" class="btn btn-success"> <i class="bi bi-x-square"> Delete</i> </a>
+    <form action="{% url 'basket:order-show' %}" method="post">
+        {% csrf_token %}
+    <button type="submit" class="btn btn-primary"> add to cart </button>
+    <input type="number" name="quantity" value="1" step="1" min="1">
+    <input type="hidden" name="book_pk" value="{{ obj.pk  }}">
+</form>
+</td>
 </tr>
  {% endfor %}
 </table> <br>

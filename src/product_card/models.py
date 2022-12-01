@@ -7,7 +7,7 @@ from datetime import date
 class Book(models.Model):
     name = models.CharField(max_length=120)
     cover = models.ImageField(upload_to='uploads/%Y/%m/%d/')
-    price = models.DecimalField(max_digits=5, decimal_places=2)
+    price = models.DecimalField(("price"), max_digits=5, decimal_places=2)
     authors = models.ForeignKey('reference_book.Author', on_delete=models.PROTECT, related_name='book')
     series = models.ForeignKey('reference_book.Seria', on_delete=models.PROTECT, related_name='book')
     genre = models.ForeignKey('reference_book.Genre', on_delete=models.PROTECT, related_name='book')

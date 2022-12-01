@@ -52,3 +52,11 @@
   main > .container {
     padding: 60px 15px 0;
   }
+
+  body {
+    padding-bottom: 20px;
+  }
+  
+  .navbar {
+    margin-bottom: 20px;
+  }

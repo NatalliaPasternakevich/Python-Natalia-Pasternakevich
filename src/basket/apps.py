@@ -1,7 +1,6 @@
 from django.apps import AppConfig
 
 
-class HomePageConfig(AppConfig):
+class BasketConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'home_page'
-
+    name = 'basket'

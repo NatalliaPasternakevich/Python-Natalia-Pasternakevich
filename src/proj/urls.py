@@ -17,14 +17,15 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from home_page.views import HomePage
+from home_page.views import Homepage
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('refb/', include('reference_book.urls', namespace="reference_book")),
     path('pcard/', include('product_card.urls', namespace="product_card")),
-    path('', HomePage.as_view())
+    path('basket/', include('basket.urls', namespace="basket")),
+    path('', Homepage.as_view(), name='home_page')
     
 ] 
 if settings.DEBUG:

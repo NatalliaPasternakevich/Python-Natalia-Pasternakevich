@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'reference_book',
     'product_card',
-    'home_page'
+    'home_page',
+    'basket'
 ]
 
 MIDDLEWARE = [
@@ -125,9 +126,9 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/home/natalliapasternakevich/static/'
+STATIC_ROOT = '../static'
 MEDIA_URL = '/media/'  
-MEDIA_ROOT = '/home/natalliapasternakevich/media/'                                                                                               
+# MEDIA_ROOT = '/home/natalliapasternakevich/media/'                                                                                               
 MEDIA_ROOT = BASE_DIR / "media"
 
 # Default primary key field type
