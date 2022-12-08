@@ -1,18 +1,56 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load i18n %}
 {% block title %}
 Home page
 {% endblock title %}
 
 {% block body %}
-<h1> В корзине</h1>
+<h1> Моя корзина</h1>
+{% csrf_token %}
+<div class="col-md-auto">
+<table border="1" class="table table-bordered table-striped-columns">
+    <thead>
+        <tr>
+            <th> Name </th>
+            <th> Quantity </th>
+            <th> Price per unit </th>
+            <th> Price </th>
+            <th> Delete</th>
+        </tr>
+        </thead>
+<tbody>
+{% for element in basket.goodsinbaskets.all %}
+<tr>
+    <td><a class="nav-link active" style="text-decoration: underline"
+            href="{% url 'product_card:book-detail' pk=element.book.pk %}">{{ element.book.name }}</a></td>
+    <td> {{ element.quantity }}</td>
+    <td> {{ element.price }} </td> 
+    <td> {{ element.total_sum }} </td>
+    <td><a href="{% url 'basket:goodsinbasket-delete' pk=element.pk %}" class="btn btn-danger">Delete</a></td>  
+</tr>
+{% endfor %}
+<tr>
+    <td colspan="3">Total:</td>
+    <td>{{ basket.total_price }}</td>
+    
+</tr>
 
-
-
-
-
-
+</tbody>
+<tbody>
+</table>
+<form action="{% url 'basket:booking-create' %}" method="post">
+    {{ form|crispy }}
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Забронировать заказ</button>
+</form>
+<br>
+</div>
+<a href="{% url 'product_card:book-show' %}" class="btn btn-secondary">Вернуться к списку книг</a><br>
 {% endblock body %}
+
+
+
 
 {% block footer %}
 

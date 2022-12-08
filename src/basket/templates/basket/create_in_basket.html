@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+Home page
+{% endblock title %}
+
+{% block body %}
+<h1> Завершите заказ под номером {{ element.pk }} </h1>
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <table border="1" class="table table-bordered table-striped-columns">
+        <thead>
+        <tr>
+            <th> Name </th>
+            <th> Quantity </th>
+            <th> Price per unit </th>
+            <th> Price </th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for element in basket.goodsinbaskets.all %}
+            <tr>
+                <td><a class="nav-link active" style="text-decoration: underline"
+                       href="{% url 'product_card:book-detail' pk=element.book.pk %}">
+                    {{ element.book.name }}</a></td>
+                <td> {{ element.quantity }}</td>
+                <td> {{ element.price }} </td>
+                <td> {{ element.total_sum }} </td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="3">Total</td>
+                <td>{{ basket.total_price }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <input type="submit" class="btn btn-success" value="Submit">
+</form>
+{% endblock body %}
+{% block footer %}
+
+{% endblock footer %}
+

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+Home page
+{% endblock title %}
+
+{% block body %}
+<h1> Удалить {{ object.book.name }} из корзины? </h1>
+<form method="post">
+{% csrf_token %}
+<button type="submit" class="btn btn-success" >Del</button>
+</form>
+{% endblock body %}
+{% block footer %}
+
+{% endblock footer %}
+
