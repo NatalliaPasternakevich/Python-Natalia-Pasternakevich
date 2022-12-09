@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('refb/', include('reference_book.urls', namespace="reference_book")),
     path('pcard/', include('product_card.urls', namespace="product_card")),
+    path('accounts/', include('accounts.urls', namespace='accounts')),
     path('basket/', include('basket.urls', namespace="basket")),
     path('', Homepage.as_view(), name='home_page')
     

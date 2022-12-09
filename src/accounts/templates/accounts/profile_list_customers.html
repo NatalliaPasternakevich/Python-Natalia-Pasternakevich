@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+Login
+{% endblock title %}
+
+{% block body %}
+<h1> All customers</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-auto">
+            <table border="1" class="table table-bordered table-striped-columns">
+                <thead>
+                <tr>
+                    <th> User</th>
+                    <th> Name</th>
+                    <th> Surname</th>
+                    <th> Phone</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for element in object_list %}
+                <tr>
+                    <td> {{ element.username }} </td>
+                    <td> {{ element.first_name }} </td>
+                    <td> {{ element.last_name }} </td>
+                    <td> {{ element.customers.phone }} </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table><br>
+        </div>
+    </div>
+</div>
+   
+{% endblock body %}
+{% block footer %}
+
+{% endblock footer %}

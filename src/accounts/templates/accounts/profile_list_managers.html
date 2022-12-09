@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+Login
+{% endblock title %}
+
+{% block body %}
+<h1> All managers" %} </h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-auto">
+            <table border="1" class="table table-bordered table-striped-columns">
+                <thead>
+                <tr>
+                    <th> User </th>
+                    <th> Phone</th>
+                    <th> Country</th>
+                    <th> City</th>
+                    <th> Zip code</th>
+                    <th> Address1</th>
+                    <th> Address2</th>
+                    <th> Information</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for element in object_list %}
+                <tr>
+                    <td> {{ element.user }} </td>
+                    <td> {{ element.phone }} </td>
+                    <td> {{ element.country }} </td>
+                    <td> {{ element.city }} </td>
+                    <td> {{ element.zip_code }} </td>
+                    <td> {{ element.address1 }} </td>
+                    <td> {{ element.address2 }} </td>
+                    <td> {{ element.information }} </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table><br>
+        </div>
+    </div>
+</div>
+   
+{% endblock body %}
+{% block footer %}
+
+{% endblock footer %}

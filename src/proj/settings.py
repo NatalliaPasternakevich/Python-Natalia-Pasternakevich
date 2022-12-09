@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'reference_book',
     'product_card',
     'home_page',
-    'basket'
+    'basket',
+    'accounts'
 ]
 
 MIDDLEWARE = [
