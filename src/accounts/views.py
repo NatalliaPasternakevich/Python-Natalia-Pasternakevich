@@ -1,6 +1,6 @@
 from django.views.generic.edit import FormView
 from django.views.generic import ListView
-from models import Customer
+from . import models 
 from . import forms
 from django.contrib.auth.models import Group
 from django.contrib.auth import update_session_auth_hash
@@ -32,7 +32,7 @@ class Registration(FormView):
 
 
 class ProfileList(ListView):
-    model = Customer
+    model = models.Customer
     template_name = 'accounts/profile_list.html'
 
     def get_context_data(self, *args, **kwargs):
@@ -40,8 +40,7 @@ class ProfileList(ListView):
         current_user = User.objects.filter(username=self.request.user)
         if current_user:
             current_user = User.objects.get(username=self.request.user)
-            object_list = \
-                Customer.objects.filter(
+            object_list = models.Customer.objects.filter(
                     Q(user_data__in=User.objects.filter(
                         Q(groups__name="Customers") &
                         ~Q(username=current_user))
@@ -51,7 +50,7 @@ class ProfileList(ListView):
 
 
 class ProfileListCustomers(ListView):
-    model = Customer
+    model = models.Customer
     template_name = 'accounts/profile_list_customers.html'
 
     def get_context_data(self, *args, **kwargs):
@@ -62,7 +61,7 @@ class ProfileListCustomers(ListView):
 
 
 class ProfileListManagers(ListView):
-    model = Customer
+    model = models.Customer
     template_name = 'accounts/profile_list_managers.html'
 
     def get_context_data(self, *args, **kwargs):

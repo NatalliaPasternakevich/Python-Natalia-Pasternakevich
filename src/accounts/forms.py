@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
-from models import Customer
+from . import models 
 
 # Register your models here.
 
@@ -15,5 +15,5 @@ class UserForm(UserCreationForm):
 
 class CustomerForm(forms.ModelForm):
     class Meta:
-        model = Customer
+        model = models.Customer
         fields = ['phone', 'country', 'city','zip_code','address1', 'address2', 'information']
