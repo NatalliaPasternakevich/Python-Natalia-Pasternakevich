@@ -24,16 +24,16 @@ Customer
 </tr>
 </thead>
 <tbody>
-{% for element in object_list %}
+{% for obj in object_list %}
 <tr>
-<td> {{ element.user }} </td>
-<td> {{ element.phone }} </td>
-<td> {{ element.country }} </td>
-<td> {{ element.city }} </td>
-<td> {{ element.zip_code }} </td>
-<td> {{ element.address1 }} </td>
-<td> {{ element.address2 }} </td>
-<td> {{ element.information }} </td>
+<td> {{ obj.user }} </td>
+<td> {{ obj.phone }} </td>
+<td> {{ obj.country }} </td>
+<td> {{ obj.city }} </td>
+<td> {{ obj.zip_code }} </td>
+<td> {{ obj.address1 }} </td>
+<td> {{ obj.address2 }} </td>
+<td> {{ obj.information }} </td>
 </tr>
 {% endfor %}
 </tbody>

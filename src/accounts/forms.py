@@ -19,7 +19,3 @@ class CustomerForm(forms.ModelForm):
         fields = ['user','phone', 'country', 'city','zip_code','address1', 'address2', 'information']
 
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        user = User.objects.get(username=self.instance.username)
-        customer = models.Customer.objects.get(user=user.id)

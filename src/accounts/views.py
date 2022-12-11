@@ -42,11 +42,11 @@ class RegistrationFill(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['user_name'] = self.request.user
+        context['username'] = self.request.user
         return context
 
     def form_valid(self, form):
-        form.instance.user_data = self.request.user
+        form.instance.user = self.request.user
         form.save()
         return super().form_valid(form)
 
