@@ -1,34 +1,20 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load i18n %}
 {% block title %}
 Delete the book
 {% endblock title %}
 
 {% block body %}
+{% if perms.product_card.delete_book %}
 <h1>Delete the book </h1>
-{{ object.name }}
-<img src="{{ object.cover }}" class="img-fluid" alt="...">
-{{ object.price }}
-{{ object.authors }}
-{{ object.series }}
-{{ object.genre }}
-{{ object.published }}
-{{ object.pages }}
-{{ object.binding }}
-{{ object.book_format }}
-{{ object.ISBN }}
-{{ object.weight }}
-{{ object.allowed_age }}
-{{ object.publisher }}
-{{ object.available }}
-{{ object.active }}
-{{ object.rating }}
-{{ object.created }}
-{{ object.updated }}
-<form action="" method="post">
+<form action="" method="post"></form>
 {% csrf_token %}
+<h2> Book:  {{ object.name }}
+</h2>
 <input type="submit" value="Submit">
 </form>
+{% endif %}
 {% endblock body %}
 
 {% block footer %}{% endblock footer %}

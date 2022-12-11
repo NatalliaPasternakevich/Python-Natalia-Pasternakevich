@@ -14,7 +14,6 @@
     <script src="{% static 'bs/js/bootstrap.bundle.min.js' %}"></script> 
     <title> {% block title %}Default{% endblock title %}</title>
 </head>
-
 <header>
   <div class="px-3 py-2 bg-dark text-white">
     <div class="container">
@@ -25,7 +24,6 @@
           </svg>
           <span class="fs-4">Livebook</span>
         </a>
-
         <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
           <li>
             <a href="/" class="nav-link text-secondary">
@@ -47,12 +45,9 @@
             <li><a class="dropdown-item" href="{% url 'reference_book:publisher-show' %}">Публикации</a></li>
             </ul>
           <li>
-            <a href="#" class="nav-link text-white">
-              Личный кабинет
-            </a>
           </li>
           <li>
-            <a href="#" class="nav-link text-white">
+            <a href="{% url 'basket:order-show' %}" class="nav-link text-white">
               Корзина
             </a>
           </li>
@@ -63,21 +58,41 @@
   <div class="px-3 py-2 border-bottom mb-3">
     <div class="container d-flex flex-wrap justify-content-center">
       <form class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto">
-        <input type="search" class="form-control" placeholder="Искать..." aria-label="Search">
       </form>
-
       <div class="text-end">
-        <button type="button" class="btn btn-light text-dark me-2">Войти</button>
-        <button type="button" class="btn btn-primary">Регистрация</button>
+        <a href="{% url 'accounts:registration' %}" class="btn btn-primary">Регистрация</a>
       </div>
     </div>
   </div>
 </header>
-
-
    <!-- Begin page content -->
     <main class="flex-shrink-0">
     <div class="container">
+      {% if perms.auth.admin %}
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="/s-admin/">Административынй портал</a></li>
+      {% endif %}
+  </ul>
+  <li class="nav-item dropdown">
+      <a class="nav-link active dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      User: {{user}}
+      </a>
+      <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="{% url 'accounts:login' %}">Войти</a></li>
+      <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">Выйти</a></li>
+      <li><hr class="dropdown-divider"></li>
+      {% if user.is_authenticated %}
+          <li><a class="dropdown-item" href="{% url 'accounts:password_change' %}">Поменять пароль</a></li>
+          <li><a class="dropdown-item" href="{% url 'accounts:profile_list' %}">Профиль пользователя</a></li>
+      {% else %}
+          <li><a class="dropdown-item disabled" href="{% url 'accounts:password_change' %}">Поменять пароль</a></li>
+          <li><a class="dropdown-item disabled" href="{% url 'accounts:profile_list' %}">Профиль пользователя</a></li>
+      {% endif %}
+      </ul>
+  </li>
+</ul>
+<main class="container">
+<div class="bg-light p-5 rounded">
         {% block body %}No content{% endblock body %}
     </div>
      </main>

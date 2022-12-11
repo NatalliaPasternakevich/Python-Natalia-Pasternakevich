@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load i18n %}
 {% block title %}
 Read the author
 {% endblock title %}
@@ -11,17 +12,8 @@ Read the author
 {{ object.name }}
 {{ object.surname }}
 </h3> 
-<a href="{% url 'reference_book:author-show' %}">Back to of authors</a>
+<a href="{% url 'reference_book:author-show' %}">Вернуться к авторам </a>
 {% endblock body %}
 
 {% block footer %}{% endblock footer %}
 
-<!-- <body>
-    <h1>Read the author </h1>
-    {% csrf_token %}
-    <h3>
-    {{ object.name }}
-    {{ object.surname }}
-    </h3> 
-    <a href="{% url 'reference_book:author-show' %}">Back to of authors</a>
-</body> -->

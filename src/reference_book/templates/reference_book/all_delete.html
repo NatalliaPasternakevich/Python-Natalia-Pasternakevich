@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load i18n %}
 {% block title %}
 Delete {{ refb_name }} 
 {% endblock title %}      
 
-
+{% block body %}
+{% if refb_name  == 'seria' and perms.reference_book.add_seria %}
 <h1>Delete {{ refb_name }} </h1>
 {{ refb_name_tab }}: {{ object.name }} <br>
 Description: {{ object.description }}
@@ -12,15 +14,24 @@ Description: {{ object.description }}
 {% csrf_token %}
 <input type="submit" value="Submit">
 </form>
+{% if refb_name  == 'genre' and perms.reference_book.add_genre %}
+<h1>Delete {{ refb_name }} </h1>
+{{ refb_name_tab }}: {{ object.name }} <br>
+Description: {{ object.description }}
+<form action="" method="post">
+{% csrf_token %}
+<input type="submit" value="Submit">
+</form>
+{% if refb_name  == 'publisher' and perms.reference_book.add_publisher %}
+<h1>Delete {{ refb_name }} </h1>
+{{ refb_name_tab }}: {{ object.name }} <br>
+Description: {{ object.description }}
+<form action="" method="post">
+{% csrf_token %}
+<input type="submit" value="Submit">
+</form>
+{% endif %}
 {% endblock body %}
 
 {% block footer %}{% endblock footer %}
-<!-- <body>
-    <h1>Delete {{ refb_name }} </h1>
-    {{ refb_name_tab }}: {{ object.name }} <br>
-    Description: {{ object.description }}
-    <form action="" method="post">
-        {% csrf_token %}
-        <input type="submit" value="Submit">
-    </form>
-</body> -->
+

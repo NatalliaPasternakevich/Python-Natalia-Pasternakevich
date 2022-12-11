@@ -1,25 +1,34 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load i18n %}
 {% block title %}
 Update {{ refb_name }}
 {% endblock title %}
 
 {% block body %}
+{% if refb_name  == 'seria' and perms.reference_book.add_seria %}
 <h1>Updating {{ refb_name }} </h1>
 <form action="" method="post">
 {% csrf_token %}
 {{ form|crispy }}
 <input type="submit" value="Submit">
 </form>
+{% if refb_name  == 'genre' and perms.reference_book.add_genre %}
+<h1>Updating {{ refb_name }} </h1>
+<form action="" method="post">
+{% csrf_token %}
+{{ form|crispy }}
+<input type="submit" value="Submit">
+</form>
+{% if refb_name  == 'publisher' and perms.reference_book.add_publisher %}
+<h1>Updating {{ refb_name }} </h1>
+<form action="" method="post">
+{% csrf_token %}
+{{ form|crispy }}
+<input type="submit" value="Submit">
+</form>
+{% endif %}
 {% endblock body %}
 
 {% block footer %}{% endblock footer %}
 
-<!-- <body>
-    <h1>Updating {{ refb_name }} </h1>
-    <form action="" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Submit">
-    </form>
-</body> -->

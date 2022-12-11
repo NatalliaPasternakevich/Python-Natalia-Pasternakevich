@@ -1,25 +1,26 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load i18n %}
 {% block title %}
-Login
+All managers
 {% endblock title %}
 
 {% block body %}
-<h1> All managers" %} </h1>
+<h1> Менеджеры</h1>
 <div class="container">
     <div class="row">
         <div class="col-md-auto">
             <table border="1" class="table table-bordered table-striped-columns">
                 <thead>
                 <tr>
-                    <th> User </th>
-                    <th> Phone</th>
-                    <th> Country</th>
-                    <th> City</th>
-                    <th> Zip code</th>
-                    <th> Address1</th>
-                    <th> Address2</th>
-                    <th> Information</th>
+                    <th> Пользователь </th>
+                    <th> Телефон</th>
+                    <th> Страна</th>
+                    <th> Город</th>
+                    <th> Индекс</th>
+                    <th> Адрес 1</th>
+                    <th> Адрес 2</th>
+                    <th> Информация</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -28,7 +29,7 @@ Login
                     <td> {{ element.user }} </td>
                     <td> {{ element.phone }} </td>
                     <td> {{ element.country }} </td>
-                    <td> {{ element.city }} </td>
+                    <td> {{ element.city}} </td>
                     <td> {{ element.zip_code }} </td>
                     <td> {{ element.address1 }} </td>
                     <td> {{ element.address2 }} </td>

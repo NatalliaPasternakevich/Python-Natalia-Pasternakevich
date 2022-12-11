@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load i18n %}
 {% block title %}
 Registration
 {% endblock title %}
 
 {% block body %}
-        <h1> Register of a new user</h1>
+        <h1> Регистрация нового пользователя</h1>
         <form method="post" action="">
             {% csrf_token %}
             {{ form|crispy }}

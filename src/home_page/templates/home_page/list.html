@@ -37,7 +37,7 @@ Home page
     <div class="card-body">
       <h5 class="card-title">{{ element.name }}</h5>
       <p class="card-text">{{ element.authors }}</p>
-      <a href="{% url 'product_card:book-detail' pk=element.pk %}" class="btn btn-primary"></a>
+      <a href="{% url 'product_card:book-detail' pk=element.pk %}" class="btn btn-primary">Узнать больше</a>
     </div>
   </div>
   {% endfor %}

@@ -1,22 +1,66 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load i18n %}
 {% block title %}
 List of {{ refb_name }}
 {% endblock title %}
 
 {% block body %}
-<h1>List of {{ refb_name }}</h1>
-<table class="table table-striped">
-
+<h1>Список {{ refb_name }}</h1>
+<div class="container">
+<div class="row">
+<div class="col-md-auto">
+<table border="1" class="table table-bordered table-striped-columns">
+<thead>
+<tr>
+{% if refb_name  == 'seria' and perms.reference_book.add_seria %}
+<th>  </th>
+{% elif refb_name  == 'genre' and perms.reference_book.add_genre %}
+<th>  </th>
+{% elif refb_name  == 'publisher' and perms.reference_book.add_publisher %}
+<th>  </th>
+{% endif %}
+<th> Название </th>
+{% if refb_name == 'seria' and perms.reference_book.delete_seria %}
+<th>  </th>
+{% elif refb_name == 'series' and perms.reference_book.delete_serie %}
+<th>  </th>
+{% elif refb_name == 'publisher' and perms.reference_book.delete_publisher %}
+<th>  </th>
+{% endif %}
+</tr>
+</thead>
+<tbody>
 {% for obj in object_list %}
 <tr>
-<td> <a href="% url refb_url_update pk=obj.pk %"> {{ obj.pk }} </a> </td>
-<td>{{ obj.name }} {{ obj.description }}</td>
-<td><a href="% url refb_url_delete pk=obj.pk %"class="btn btn-success"> <i class="bi bi-x-square"> Delete</i> </a></td>
+    {% if refb_name  == 'seria' and perms.reference_book.add_seria %}
+    <td> <a href="% url refb_url_update pk=obj.pk %"> {{ obj.pk }} </a> </td>
+    {% elif refb_name  == 'genre' and perms.reference_book.add_genre %}
+    <td> <a href="% url refb_url_update pk=obj.pk %"> {{ obj.pk }} </a> </td>
+    {% elif refb_name  == 'publisher' and perms.reference_book.add_publisher %}
+    <td> <a href="% url refb_url_update pk=obj.pk %"> {{ obj.pk }} </a> </td>
+    {% endif %}
+    <td> {{ obj.name }} </td>
+    <td>{{ obj.description }}</td>
+    {% if refb_name == 'seria' and perms.reference_book.delete_seria %}
+    <td><a href="% url refb_url_delete pk=obj.pk %"class="btn btn-success"> <i class="bi bi-x-square"> Delete</i> </a></td>
+    {% elif refb_name == 'series' and perms.reference_book.delete_serie %}
+    <td><a href="% url refb_url_delete pk=obj.pk %"class="btn btn-success"> <i class="bi bi-x-square"> Delete</i> </a></td>
+    {% elif refb_name == 'publisher' and perms.reference_book.delete_publisher %}
+    <td><a href="% url refb_url_delete pk=obj.pk %"class="btn btn-success"> <i class="bi bi-x-square"> Delete</i> </a></td>
+    {% endif %}
 </tr>
 {% endfor %}
+</tbody>
 </table> <br>
-<a href="{% url refb_url_create %}">Add an genre</a>
+{% if refb_name  == 'seria' and perms.reference_book.add_seria %}
+<a href="{% url refb_url_create %}">Добавить {{ refb_name }} </a>
+{% elif refb_name  == 'genre' and perms.reference_book.add_genre %}
+<a href="{% url refb_url_create %}">Добавить {{ refb_name }}</a>
+{% elif refb_name  == 'publisher' and perms.reference_book.add_publisher %}
+<a href="{% url refb_url_create %}">Добавить {{ refb_name }}</a>
+{% endif %}
+
 {% endblock body %}
 
 {% block footer %}{% endblock footer %}

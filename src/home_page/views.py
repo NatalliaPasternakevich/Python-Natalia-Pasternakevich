@@ -11,7 +11,7 @@ class Homepage(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        books = Book.objects.all().order_by('-updated')[:10]
+        books = Book.objects.all().order_by('-updated')[:5]
         context['object_list'] = books
         return context
 

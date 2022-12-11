@@ -1,22 +1,40 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load i18n %}
 {% block title %}
 List of authors
 {% endblock title %}
 
 {% block body %}
 <h1>List of authors</h1>
-<table class="table table-bordered border-primary">
+<table border="1" class="table table-bordered border-primary">
+    <thead>
+        <tr>
+            {% if perms.reference_book.change_author %}
+            <th>  </th>
+            {% endif %}
+            <th> Имя Фамилия </th>
+            <th> Описание</th>
+            {% if perms.reference_book.delete_author %}
+            {% endif %}
+        </tr>
+        </thead>
 {% for obj in object_list %}
 <tr>
+{% if perms.reference_book.change_author %}
 <td><a href="{% url 'reference_book:author-update' pk=obj.pk %}"> {{ obj.pk }} </a></td>
+{% endif %}
 <td>{{ obj.name }} {{ obj.surname }}</td>
+{% if perms.reference_book.delete_author %}
 <td><a href="{% url 'reference_book:author-delete' pk=obj.pk %}" class="btn btn-success"> <i class="bi bi-x-square"> Delete</i> </a>
 </td>
 </tr>
+{% endif %}
  {% endfor %}
 </table> <br>
-<a href="{% url 'reference_book:author-create' %}">Add an author</a>
+{% if perms.reference_book.add_author %}
+<a href="{% url 'reference_book:author-create' %}">Добавить автора</a>
+{% endif %}
 {% endblock body %}
 
 {% block footer %}

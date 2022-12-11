@@ -1,22 +1,43 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load i18n %}
 {% block title %}
 List of books
 {% endblock title %}
 
 {% block body %}
-<h1>List of books</h1>
-<table class="table table-bordered border-primary">
+<h1>Список книг</h1>
+<div class="container">
+<div class="row">
+<div class="col-md-auto">
+<table border="1" class="table table-bordered table-striped-columns">
+<thead>
+    <tr>
+            <th> Название</th>
+            <th> Цена </th>
+            {% if perms.product_card.change_book %}
+            <th>  </th>
+            {% endif %}
+            {% if perms.product_card.delete_book %}
+            <th>  </th>
+            {% endif %}
+            </tr>
+            </thead>
+            <tbody>
 {% for obj in object_list %}
 <tr>
+{% if perms.product_card.delete_book %}
 <td><a href="{% url 'product_card:book-update' pk=obj.pk %}"> {{ obj.pk }} </a> </td>
-<td>{{ obj.name }} <br>  
-    {{ obj.authors }}
-</td>
-<td><a href="{% url 'product_card:book-delete' pk=obj.pk %}" class="btn btn-success"> <i class="bi bi-x-square"> Delete</i> </a>
+{% endif %}
+<td> <a href="{% url 'product_card:book-detail' pk=obj.pk %}"> {{ obj.name }} <br></a>  {{ obj.authors }}</td>
+<td>{{ obj.price }}</td>
+<td>
+ {% if perms.product_card.delete_book %}
+<a href="{% url 'product_card:book-delete' pk=obj.pk %}" class="btn btn-success"> <i class="bi bi-x-square"> Delete</i> </a>
+{% endif %}
     <form action="{% url 'basket:order-show' %}" method="post">
-        {% csrf_token %}
-    <button type="submit" class="btn btn-primary"> add to cart </button>
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary"> Добавить в корзину </button>
     <input type="number" name="quantity" value="1" step="1" min="1">
     <input type="hidden" name="book_pk" value="{{ obj.pk  }}">
 </form>
@@ -24,7 +45,9 @@ List of books
 </tr>
  {% endfor %}
 </table> <br>
+{% if perms.product_card.add_book %}
 <a href="{% url 'product_card:book-create' %}">Add an book</a>
+{% endif %}
 {% endblock body %}
 
 {% block footer %}

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load i18n %}
 {% block title %}
 Login
 {% endblock title %}
@@ -8,9 +9,9 @@ Login
         <h1> Login </h1>
             {% if form.errors %}
                 <p>
-                    {% blocktrans %}
-                    Your username and password didn't match. Please try again.
-                    {% endblocktrans %}
+                {% blocktrans %}
+                Your username and password didn't match. Please try again.
+                {% endblocktrans %}
                 </p>
             {% endif %}
 

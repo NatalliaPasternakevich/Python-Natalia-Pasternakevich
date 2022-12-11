@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.views import  generic 
 from django.urls import reverse_lazy
 from . import models, forms
+from django.contrib.auth.mixins import PermissionRequiredMixin
 # Create your views here.
 
 
@@ -13,7 +14,8 @@ class ShowAuthors(generic.ListView):
     template_name = 'reference_book/list.html'
 
 
-class CreateAuthor(generic.CreateView):
+class CreateAuthor(PermissionRequiredMixin, generic.CreateView):
+    permission_required = 'reference_book.add_author'
     model = models.Author
     form_class = forms.AuthorForm
     template_name = 'reference_book/create.html'
@@ -26,7 +28,8 @@ class ReadAuthor(generic.DetailView):
     model = models.Author
     template_name = 'reference_book/read.html'
    
-class UpdateAuthor(generic.UpdateView):
+class UpdateAuthor(PermissionRequiredMixin, generic.UpdateView):
+    permission_required = 'reference_book.change_author'
     model = models.Author
     form_class = forms.AuthorForm
     template_name = 'reference_book/update.html'
@@ -35,7 +38,8 @@ class UpdateAuthor(generic.UpdateView):
        return reverse_lazy('reference_book:author-detail', kwargs={'pk': self.object.pk})
 
 
-class DeleteAuthor(generic.DeleteView):
+class DeleteAuthor(PermissionRequiredMixin, generic.DeleteView):
+    permission_required = 'reference_book.delete_author'
     model = models.Author
     template_name = 'reference_book/delete.html'
     success_url = reverse_lazy('reference_book:author-show')
@@ -55,7 +59,8 @@ class ShowSeria(generic.ListView):
         return context
 
 
-class CreateSeria(generic.CreateView):
+class CreateSeria(PermissionRequiredMixin, generic.CreateView):
+    permission_required = 'reference_book.add_seria'
     model = models.Seria
     form_class = forms.SeriaForm
     template_name = 'reference_book/all_create.html'
@@ -80,7 +85,8 @@ class ReadSeria(generic.DetailView):
         return context
 
    
-class UpdateSeria(generic.UpdateView):
+class UpdateSeria(PermissionRequiredMixin, generic.UpdateView):
+    permission_required = 'reference_book.change_seria'
     model = models.Seria
     form_class = forms.SeriaForm
     template_name = 'reference_book/all_update.html'
@@ -93,7 +99,8 @@ class UpdateSeria(generic.UpdateView):
         context['refb_name'] = 'seria'
         return context
 
-class DeleteSeria(generic.DeleteView):
+class DeleteSeria(PermissionRequiredMixin, generic.DeleteView):
+    permission_required = 'reference_book.delete_seria'
     model = models.Seria
     template_name = 'reference_book/all_delete.html'
     success_url = reverse_lazy('reference_book:seria-show')
@@ -119,7 +126,7 @@ class ShowGenre(generic.ListView):
         return context
 
 
-class CreateGenre(generic.CreateView):
+class CreateGenre(PermissionRequiredMixin, generic.CreateView):
     model = models.Genre
     form_class = forms.GenreForm
     template_name = 'reference_book/all_create.html'
@@ -133,6 +140,7 @@ class CreateGenre(generic.CreateView):
         return context
 
 class ReadGenre(generic.DetailView):
+    permission_required = 'reference_book.add_genre'
     model = models.Genre
     template_name = 'reference_book/all_read.html'
 
@@ -144,7 +152,8 @@ class ReadGenre(generic.DetailView):
         return context
 
    
-class UpdateGenre(generic.UpdateView):
+class UpdateGenre(PermissionRequiredMixin, generic.UpdateView):
+    permission_required = 'reference_book.change_genre'
     model = models.Genre
     form_class = forms.GenreForm
     template_name = 'reference_book/all_update.html'
@@ -157,7 +166,8 @@ class UpdateGenre(generic.UpdateView):
         context['refb_name'] = 'genre'
         return context
 
-class DeleteGenre(generic.DeleteView):
+class DeleteGenre(PermissionRequiredMixin, generic.DeleteView):
+    permission_required = 'reference_book.delete_genre'
     model = models.Genre
     template_name = 'reference_book/all_delete.html'
     success_url = reverse_lazy('reference_book:genre-show')
@@ -184,7 +194,8 @@ class ShowPublisher(generic.ListView):
 
 
 
-class CreatePublisher(generic.CreateView):
+class CreatePublisher(PermissionRequiredMixin, generic.CreateView):
+    permission_required = 'reference_book.add_publisher'
     model = models.Publisher
     form_class = forms.PublisherForm
     template_name = 'reference_book/all_create.html'
@@ -209,7 +220,8 @@ class ReadPublisher(generic.DetailView):
         return context
 
    
-class UpdatePublisher(generic.UpdateView):
+class UpdatePublisher(PermissionRequiredMixin, generic.UpdateView):
+    permission_required = 'reference_book.change_publisher'
     model = models.Publisher
     form_class = forms.PublisherForm
     template_name = 'reference_book/all_update.html'
@@ -222,7 +234,8 @@ class UpdatePublisher(generic.UpdateView):
         context['refb_name'] = 'publisher'
         return context
 
-class DeletePublisher(generic.DeleteView):
+class DeletePublisher(PermissionRequiredMixin, generic.DeleteView):
+    permission_required = 'reference_book.delete_publisher'
     model = models.Publisher
     template_name = 'reference_book/all_delete.html'
     success_url = reverse_lazy('reference_book:publisher-show')

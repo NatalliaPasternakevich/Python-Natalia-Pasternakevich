@@ -12,11 +12,11 @@ Home page
 <table border="1" class="table table-bordered table-striped-columns">
     <thead>
         <tr>
-            <th> Name </th>
-            <th> Quantity </th>
-            <th> Price per unit </th>
-            <th> Price </th>
-            <th> Delete</th>
+            <th> Название </th>
+            <th> Количество </th>
+            <th> Цена за единицу</th>
+            <th> Цена </th>
+            <th> Убрать</th>
         </tr>
         </thead>
 <tbody>
@@ -31,11 +31,9 @@ Home page
 </tr>
 {% endfor %}
 <tr>
-    <td colspan="3">Total:</td>
+    <td colspan="3">Итого:</td>
     <td>{{ basket.total_price }}</td>
-    
 </tr>
-
 </tbody>
 <tbody>
 </table>

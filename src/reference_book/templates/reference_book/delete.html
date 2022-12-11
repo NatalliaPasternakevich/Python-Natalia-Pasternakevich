@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load i18n %}
 {% block title %}
 Delete the author
 {% endblock title %}
 
 {% block body %}
+{% if perms.reference_book.delete_author %}
 <h1>Delete the author </h1>
 {{ object.name }}
 {{ object.surname }}
@@ -12,6 +14,7 @@ Delete the author
 {% csrf_token %}
 <input type="submit" value="Submit">
 </form>
+{% endif %}
 {% endblock body %}
 
 {% block footer %}{% endblock footer %}
