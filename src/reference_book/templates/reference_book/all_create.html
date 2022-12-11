@@ -11,19 +11,21 @@
 <form action="" method="post">
 {% csrf_token %}
 {{ form|crispy }}
-<input type="button" value="Send" class="btn btn-outline-success">
-{% if refb_name  == 'genre' and perms.reference_book.add_genre %}
+<input type="submit" class="btn btn-outline-success" value="Submit">
+</form>
+{% elif refb_name  == 'genre' and perms.reference_book.add_genre %}
 <h1>Сreate {{ refb_name }} </h1>
 <form action="" method="post">
 {% csrf_token %}
 {{ form|crispy }}
-<input type="button" value="Send" class="btn btn-outline-success">
-{% if refb_name  == 'publisher' and perms.reference_book.add_publisher %}
+<input type="submit" class="btn btn-outline-success" value="Submit">
+</form>
+{% elif refb_name  == 'publisher' and perms.reference_book.add_publisher %}
 <h1>Сreate {{ refb_name }} </h1>
 <form action="" method="post">
 {% csrf_token %}
 {{ form|crispy }}
-<input type="button" value="Send" class="btn btn-outline-success">
+<input type="submit" class="btn btn-outline-success" value="Submit">
 </form>
 {% endif %}
 {% endblock body %}

@@ -1,5 +1,3 @@
-from django.shortcuts import render
-from django.http import HttpResponse
 from django.views import  generic 
 from django.urls import reverse_lazy
 from . import models, forms
@@ -64,6 +62,7 @@ class CreateSeria(PermissionRequiredMixin, generic.CreateView):
     model = models.Seria
     form_class = forms.SeriaForm
     template_name = 'reference_book/all_create.html'
+    
 
     def get_success_url(self):
         return reverse_lazy('reference_book:seria-detail', kwargs={'pk': self.object.pk})
@@ -127,6 +126,7 @@ class ShowGenre(generic.ListView):
 
 
 class CreateGenre(PermissionRequiredMixin, generic.CreateView):
+    permission_required = 'reference_book.add_genre'
     model = models.Genre
     form_class = forms.GenreForm
     template_name = 'reference_book/all_create.html'
@@ -140,7 +140,6 @@ class CreateGenre(PermissionRequiredMixin, generic.CreateView):
         return context
 
 class ReadGenre(generic.DetailView):
-    permission_required = 'reference_book.add_genre'
     model = models.Genre
     template_name = 'reference_book/all_read.html'
 

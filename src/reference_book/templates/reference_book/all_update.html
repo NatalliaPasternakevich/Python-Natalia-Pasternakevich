@@ -6,26 +6,26 @@ Update {{ refb_name }}
 {% endblock title %}
 
 {% block body %}
-{% if refb_name  == 'seria' and perms.reference_book.add_seria %}
+{% if refb_name  == 'seria' and perms.reference_book.change_seria %}
 <h1>Updating {{ refb_name }} </h1>
 <form action="" method="post">
 {% csrf_token %}
 {{ form|crispy }}
-<input type="submit" value="Submit">
+<input type="submit" class="btn btn-outline-success" value="Submit">
 </form>
-{% if refb_name  == 'genre' and perms.reference_book.add_genre %}
+{% elif refb_name  == 'genre' and perms.reference_book.change_genre %}
 <h1>Updating {{ refb_name }} </h1>
 <form action="" method="post">
 {% csrf_token %}
 {{ form|crispy }}
-<input type="submit" value="Submit">
+<input type="submit" class="btn btn-outline-success" value="Submit">
 </form>
-{% if refb_name  == 'publisher' and perms.reference_book.add_publisher %}
+{% elif refb_name  == 'publisher' and perms.reference_book.change_publisher %}
 <h1>Updating {{ refb_name }} </h1>
 <form action="" method="post">
 {% csrf_token %}
 {{ form|crispy }}
-<input type="submit" value="Submit">
+<input type="submit" class="btn btn-outline-success" value="Submit">
 </form>
 {% endif %}
 {% endblock body %}

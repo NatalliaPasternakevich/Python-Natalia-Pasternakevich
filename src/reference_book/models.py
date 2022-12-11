@@ -1,5 +1,3 @@
-from unicodedata import name
-from unittest.util import _MAX_LENGTH
 from django.db import models
 from django.urls import reverse_lazy
 
@@ -16,7 +14,6 @@ class Author(models.Model):
         return self.name 
 
     def get_absolute_url(self):
-        # return f'ref-autor/{self.pk}' было так
         return reverse_lazy('reference_book:author-detail', kwargs={'pk': self.pk})
 
 class Seria(models.Model):
@@ -33,7 +30,7 @@ class Seria(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse_lazy('reference:seria-detail', kwargs={'pk': self.pk})       
+        return reverse_lazy('reference_book:seria-detail', kwargs={'pk': self.pk})       
 
 class Genre(models.Model):
     name = models.CharField(max_length=120)
@@ -49,7 +46,7 @@ class Genre(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse_lazy('reference:genre-detail', kwargs={'pk': self.pk})
+        return reverse_lazy('reference_book:genre-detail', kwargs={'pk': self.pk})
 
 
 class Publisher(models.Model):
@@ -66,6 +63,6 @@ class Publisher(models.Model):
         return self.name 
 
     def get_absolute_url(self):
-        return reverse_lazy('reference:publisher-detail', kwargs={'pk': self.pk})
+        return reverse_lazy('reference_book:publisher-detail', kwargs={'pk': self.pk})
 
     
