@@ -24,7 +24,6 @@
           </svg>
           <span class="fs-4">Livebook</span>
         </a>
-        
         <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
           <li>
             <a href="/" class="nav-link text-secondary">
@@ -56,36 +55,39 @@
       </div>
     </div>
   </div>
-  <main class="flex-shrink-0">
-    <div class="container">
-      {% if perms.auth.admin %}
-      <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="/admin/">Административынй портал</a></li>
-      {% endif %}
-  </ul>
-  <li class="nav-item dropdown dropup">
-      <a class="nav-link active dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      User: {{user}}
-      </a>
-      <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="{% url 'accounts:login' %}">Войти</a></li>
-      <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">Выйти</a></li>
-      <li><hr class="dropdown-divider"></li>
-      {% if user.is_authenticated %}
-      <li><a class="dropdown-item" href="{% url 'accounts:profile_list' %}">Профиль пользователя</a></li>
-          <li><a class="dropdown-item" href="{% url 'accounts:password_change' %}">Изменить пароль</a></li>
-
-      {% else %}
-      <li><a class="dropdown-item" href="{% url 'accounts:profile_list' %}">Профиль пользователя</a></li>
-      <li><a class="dropdown-item" href="{% url 'accounts:password_change' %}">Изменить пароль</a></li>
-{% endif %}
-      </ul>
-  </li>
-</ul>
   <div class="px-3 py-2 border-bottom mb-3">
     <div class="container d-flex flex-wrap justify-content-center">
       <form class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto">
       </form>
+      <main class="flex-shrink-0">
+        <div class="container">
+          {% if perms.auth.admin %}
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="/admin/">Административынй портал</a></li>
+          {% endif %}
+          {% if perms.auth.managers %}
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="/admin/">Административынй портал</a></li>
+          {% endif %}
+      </ul>
+      <li class="nav-item dropdown">
+          <a class="nav-link active dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          User: {{user}}
+          </a>
+          <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="{% url 'accounts:login' %}">Войти</a></li>
+          <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">Выйти</a></li>
+          <li><hr class="dropdown-divider"></li>
+          {% if user.is_authenticated %}
+              <li><a class="dropdown-item" href="{% url 'accounts:password_change' %}">Поменять пароль</a></li>
+              <li><a class="dropdown-item" href="{% url 'accounts:profile_list' %}">Профиль пользователя</a></li>
+          {% else %}
+              <li><a class="dropdown-item disabled" href="{% url 'accounts:password_change' %}">Поменять пароль</a></li>
+              <li><a class="dropdown-item disabled" href="{% url 'accounts:profile_list' %}">Профиль пользователя</a></li>
+          {% endif %}
+          </ul>
+      </li>
+    </ul>
       <div class="text-end">
         <a href="{% url 'accounts:registration' %}" class="btn btn-primary">Регистрация</a>
       </div>
