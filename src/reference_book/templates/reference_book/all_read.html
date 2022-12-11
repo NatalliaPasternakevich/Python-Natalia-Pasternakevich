@@ -7,11 +7,19 @@ Read {{ refb_name }}
 
 {% block body %}
 <h1>О {{ refb_name }}</h1>
+<table border="1" class="table table-bordered border-primary">
+<thead>
+<tr>
+<th> Название {{ refb_name_tab }}: </th>
+<th> Описание </th>
+</tr>
+</thead>
 {% csrf_token %}
-<h3>
-{{ refb_name_tab }}: {{ object.name }}<br>
-Description: {{ object.description }}
-</h3> 
+<tr>
+<td>{{ object.name }}</td>
+<td>{{ object.description }}</td>
+</tr>
+</table> <br>
 <a href="{% url refb_url %}">Вернуться к списку {{ refb_name }}</a>
 {% endblock body %}
 

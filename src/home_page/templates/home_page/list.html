@@ -7,9 +7,7 @@ Home page
 {% block body %}
 <h1 class="featurette-Заголовок">Livebook</h1>
 <h4><span class="text-muted">книжный интернет-магазин</span></h4>
-
 <hr class="featurette-divider">
-
 <div class="row featurette">
 <div class="col-md-7">
 <p class="fw-lighter" class="text-sm-start"> Книги выбирать интересней всей семьей. Уютно
@@ -28,9 +26,9 @@ Home page
 <div class="container">
 <div class="row">
 {% for element in object_list %}
-  <div class="card" style="width: 14rem;">
+  <div class="card" style="width: 15rem;">
     {% if element.cover %}
-      <img src="{{ element.cover.url }}" class="card-img-top" alt="..." width="200" height="400">
+      <img src="{{ element.cover.url }}" class="card-img-top" alt="..." width="250" height="300">
     {% else %}
       <img src="" class="card-img-top" alt="..."  width="200" height="400">
     {% endif%}
@@ -41,9 +39,6 @@ Home page
     </div>
   </div>
   {% endfor %}
-
-
-
 {% endblock body %}
 
 {% block footer %}

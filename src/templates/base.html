@@ -70,7 +70,11 @@
     <div class="container">
       {% if perms.auth.admin %}
       <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="/s-admin/">Административынй портал</a></li>
+      <li><a class="dropdown-item" href="/admin/">Административынй портал</a></li>
+      {% endif %}
+      {% if perms.auth.managers %}
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="/admin/">Административынй портал</a></li>
       {% endif %}
   </ul>
   <li class="nav-item dropdown">

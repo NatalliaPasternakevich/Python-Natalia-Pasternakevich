@@ -6,12 +6,20 @@ Read the author
 {% endblock title %}
 
 {% block body %}
-<h1>Read the author </h1>
+<h1> Об Авторе </h1>
+<table border="1" class="table table-bordered border-primary">
+<thead>
+<tr>
+<th> Имя </th>
+<th> Фамилия</th>
+</tr>
+</thead>
 {% csrf_token %}
-<h3>
-{{ object.name }}
-{{ object.surname }}
-</h3> 
+<tr>
+<td>{{ object.name }}</td>
+<td>{{ object.surname }}</td>
+</tr>
+</table> <br>
 <a href="{% url 'reference_book:author-show' %}">Вернуться к авторам </a>
 {% endblock body %}
 
